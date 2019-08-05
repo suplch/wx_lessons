@@ -1,0 +1,16 @@
+<!--pages/profile/profile.wxml-->
+<view class="container">
+  <text>个人中心</text>
+  <view>
+    <text>{{message}}</text>
+    <button bindtap="change">修改</button>
+  </view>
+  <view>
+    <view wx:key="{{hobby.id}}" wx:for="{{hobbies}}" wx:for-item="hobby" wx:for-index="posi">
+      <text>{{posi + 1}}, {{hobby.text}}</text>
+      <text wx:if="{{hobby.level >= 5}}">*</text>
+      <button data-hobby="{{hobby}}" bindtap="delHobby">删除</button>
+    </view>
+  </view>
+</view>
+

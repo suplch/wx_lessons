@@ -1,0 +1,4 @@
+<!--pages/center/center.wxml-->
+<view>
+  <login username="zhang" password="12345678" bind:onLogin="handleLogin" />
+</view>

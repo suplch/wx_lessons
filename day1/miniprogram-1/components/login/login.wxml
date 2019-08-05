@@ -1,0 +1,8 @@
+<!--components/login/login.wxml-->
+<view>
+  <text>用户名</text>
+  <input type="text" bindinput="unameinput" value="{{uname}}" />
+  <text>密码</text>
+  <input password bindinput="upwdinput" value="{{upwd}}" />
+  <button bindtap="login">提交</button>
+</view>
