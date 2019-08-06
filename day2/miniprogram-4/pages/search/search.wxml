@@ -1,0 +1,26 @@
+<view>
+  <input bindinput="inputWord" type="text" value="{{word}}" />
+  <button bind:tap="search">查询</button>
+    <view wx:if="{{song}}">
+      <view class="item">
+          <text>专辑</text><text>{{song.album.length}}</text>
+          <view wx:for="{{song.album}}" wx:key="{{album.albumid}}" wx:for-item="album">
+            <text>{{album.albumname}}</text>
+            <text>{{album.artistname}}</text>
+          </view>
+      </view>
+      <view  class="item">
+          <text>专辑</text><text>{{song.album.length}}</text>
+          <view wx:for="{{song.artist}}" wx:key="{{artist.artistid}}" wx:for-item="artist">
+            <text>{{artist.artistname}}</text>
+          </view>
+      </view>
+      <view  class="item">
+          <text>专辑</text><text>{{song.song.length}}</text>
+          <view wx:for="{{song.song}}" wx:key="{{song.songid}}" wx:for-item="song">
+            <text>{{song.songname}}</text>
+            <text>{{song.info}}</text>
+          </view>
+      </view>
+    </view>
+</view>
