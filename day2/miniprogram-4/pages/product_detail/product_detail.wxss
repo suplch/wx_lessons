@@ -1,0 +1,6 @@
+.label {
+  float: left;
+  margin: 20rpx;
+  padding: 10rpx;
+  border: solid 1px red;
+}

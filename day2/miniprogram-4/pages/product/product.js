@@ -10,6 +10,13 @@ Page({
     products: []
   },
 
+  gotoDetail(event) {
+    console.log(event.currentTarget.dataset.pid)
+    wx.navigateTo({
+      url: '../product_detail/product_detail?pid=' + event.currentTarget.dataset.pid,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

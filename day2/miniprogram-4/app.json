@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/search/search",
-    "pages/product/product"
+    "pages/product/product",
+    "pages/product_detail/product_detail"
   ],
   "tabBar": {
     "list": [

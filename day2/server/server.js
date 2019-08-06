@@ -20,6 +20,23 @@ app.get('/api/getproducts',function(req,res,next){
     });
 });
 
+app.get('/api/productDetail', function (req, res) {
+
+    const productId = req.query.pid;
+    const detail = mock.getProductDetail(productId)
+
+    if (detail) {
+        res.send({
+            productDetail: detail
+        })
+    } else {
+        res.send({
+            msg: '未发布',
+            productDetail: null
+        })
+    }
+});
+
 
 app.listen(3000, function (err) {
     if (err) return console.log(err)

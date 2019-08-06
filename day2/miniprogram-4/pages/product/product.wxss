@@ -1,6 +1,6 @@
 .product-item {
   margin: 20rpx;
   padding: 20rpx;
-  height: 120rpx;
+  height: 220rpx;
   box-shadow: 1px 1px 5px orange;
 }

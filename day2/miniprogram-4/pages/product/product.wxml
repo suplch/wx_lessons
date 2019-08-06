@@ -1,6 +1,11 @@
 <view>
-  <view wx:key="{{product.id}}" wx:for="{{products}}" wx:for-item="product" class="product-item">
-    <text>{{product.name}}</text>
-    <image src="{{product.imgUrl}}" style="float: right; width: 100rpx; height:100rpx" />
+  <view bindtap="gotoDetail" data-pid="{{product.id}}" wx:key="{{product.id}}" wx:for="{{products}}" wx:for-item="product" class="product-item">
+    <image src="{{product.imgUrl}}" style="float: right; width: 200rpx; height:200rpx" />
+    <view>
+      <text>{{product.name}}</text>
+    </view>
+    <view style="margin-top: 50rpx">
+      <text style="color: red; font-weight: bold;">¥{{product.price}}</text>
+    </view>
   </view>
 </view>
