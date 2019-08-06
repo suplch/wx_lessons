@@ -1,0 +1,6 @@
+<view>
+  <view wx:key="{{product.id}}" wx:for="{{products}}" wx:for-item="product" class="product-item">
+    <text>{{product.name}}</text>
+    <image src="{{product.imgUrl}}" style="float: right; width: 100rpx; height:100rpx" />
+  </view>
+</view>

@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/product/product"
   ],
   "tabBar": {
     "list": [
@@ -13,6 +14,10 @@
       {
         "pagePath": "pages/search/search",
         "text": "查询"
+      },
+      {
+        "pagePath": "pages/product/product",
+        "text": "产品"
       }
     ]
   },
