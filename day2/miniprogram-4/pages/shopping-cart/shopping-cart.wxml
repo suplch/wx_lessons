@@ -12,6 +12,6 @@
 
   <view class="foot">
     <text>总计 ¥{{total}}元</text>
-    <button class="pay">去支付</button>
+    <button bindtap="goPay" class="pay">去支付</button>
   </view>
 </view>

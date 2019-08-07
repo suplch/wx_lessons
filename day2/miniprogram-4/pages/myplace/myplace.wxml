@@ -1,0 +1,15 @@
+<view>
+  地址列表
+  <view wx:key="{{index}}" wx:for="{{placeList}}" class="placeItem">
+    <button data-itemIndex="{{index}}" bindtap="delPlace" class="delbtn">X</button>
+    <text>{{item.clientName}}, {{item.phone}}, {{item.placeText}}</text>
+    <button bindtap="choicebtn" data-place="{{item}}" class="choicebtn">选择</button>
+  </view>
+
+  <view>
+    姓名: <input bindinput="changeName" type="text" value="{{newPlace.clientName}}" />
+    电话: <input bindinput="changePhone"  type="text" value="{{newPlace.phone}}" />
+    地址: <input bindinput="changePlace"  type="text" value="{{newPlace.placeText}}" />
+    <button bindtap="addPlace">添加地址</button>
+  </view>
+</view>

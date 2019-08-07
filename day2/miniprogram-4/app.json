@@ -5,7 +5,9 @@
     "pages/search/search",
     "pages/product/product",
     "pages/product_detail/product_detail",
-    "pages/shopping-cart/shopping-cart"
+    "pages/shopping-cart/shopping-cart",
+    "pages/preview/preview",
+    "pages/myplace/myplace"
   ],
   "tabBar": {
     "list": [

@@ -1,0 +1,18 @@
+.placeItem {
+  margin: 20rpx;
+  padding: 20prx;
+  height: 100rpx;
+  box-shadow: 1px 1px 5rpx grey;
+}
+
+input {
+  margin: 30rpx;
+  border: solid 1px red;
+}
+
+.choicebtn {
+  float: right;
+}
+.delbtn {
+  float: left;
+}

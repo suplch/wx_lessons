@@ -1,0 +1,17 @@
+.goodsItem {
+  margin: 20rpx;
+  padding: 20rpx;
+  box-shadow: 1px 1px 5px red;
+}
+
+.foot {
+  position: fixed;
+  left: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  height: 100rpx;
+}
+
+.foot .pay {
+  float: right;
+}

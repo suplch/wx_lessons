@@ -1,0 +1,19 @@
+<view>
+  <view>
+    <button bindtap="goPlace">选择地址</button>
+    <view wx:if="{{place}}">
+      <text>地址: {{place.placeText}}, 电话: {{place.phone}}, 收货人: {{place.clientName}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{cartItems}}">
+    <view wx:key="{{item.pid}}" wx:for="{{cartItems}}" class="goodsItem">
+      <text>名称: {{item.name}}, 价格: {{item.price}}, 数量: {{item.count}}</text>
+    </view>
+  </view>
+
+  <view class="foot">
+    <text>合计: ¥{{total}} 元</text>
+    <button class="pay">支付</button>
+  </view>
+</view>

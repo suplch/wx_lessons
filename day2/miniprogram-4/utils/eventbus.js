@@ -27,7 +27,6 @@ module.exports = {
         callbackList.splice(position, 1);
       }
     }
-
   },
 
   emit(eventName, data) {

@@ -1,60 +1,48 @@
-// pages/shopping-cart/shopping-cart.js
-
-const cart = require('../../utils/shoppingcart.js');
-
+// pages/preview/preview.js
 const eventBus = require('../../utils/eventbus.js');
-
-
+ //  wx.setStorageSync('currentPlace', event.currentTarget.dataset.place)
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    cartItems: [],
-    total: 0
+    cartItems: null,
+    total: 0,
+    place: wx.getStorageSync('currentPlace') || null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options);
+    const cartItems = JSON.parse(options.cartItems)
+    let total = 0;
+    for (let item of cartItems) {
+      total += item.price * item.count
+    }
 
-    console.log('cart', cart.getCartItems())
     this.setData({
-      cartItems: cart.getCartItems(),
-      total: cart.getTotal()
+      cartItems: cartItems,
+      total: total
     })
+
+    eventBus.on('choicePlace', (place) => {
+      console.log('preview ', place);
+      this.setData({
+        place: place
+      })
+    })
+
   },
 
-  incCount(event) {
-    console.log(event.currentTarget.dataset.pid);
-    cart.incCount(event.currentTarget.dataset.pid)
-    // event bus 广播一个事件 refreshCartCount
-    eventBus.emit('refreshCartCount', ' a data');
-    this.setData({
-      cartItems: cart.getCartItems(),
-      total: cart.getTotal()
-    })
-  },
-
-  decCount(event) {
-    cart.decCount(event.currentTarget.dataset.pid)
-    eventBus.emit('refreshCartCount');
-    this.setData({
-      cartItems: cart.getCartItems(),
-      total: cart.getTotal()
-    })
-  },
-
-  goPay() {
-    let cartItems = cart.getCartItems();
-    let cartItemsStr = JSON.stringify(cartItems)
+  goPlace() {
     wx.navigateTo({
-      url: '../preview/preview?cartItems=' + cartItemsStr,
+      url: '../myplace/myplace',
     })
   },
- 
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
