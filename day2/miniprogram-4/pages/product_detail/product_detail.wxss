@@ -4,3 +4,10 @@
   padding: 10rpx;
   border: solid 1px red;
 }
+
+.button {
+  float: right;
+  font-size: 24rpx;
+  margin: 10rpx;
+  height: 80rpx;
+}

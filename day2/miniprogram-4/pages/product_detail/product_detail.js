@@ -3,6 +3,8 @@
 const app = getApp()
 
 const cart = require('../../utils/shoppingcart');
+const eventBus = require('../../utils/eventbus.js');
+
 
 Page({
   product_id: null,
@@ -10,7 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detail: null
+    detail: null,
+    cartItemCount: 0
   },
 
   /**
@@ -26,9 +29,17 @@ Page({
       success(res) {
         console.log(res.data)
         thispage.setData({
-          detail: res.data.productDetail
+          detail: res.data.productDetail,
+          cartItemCount: cart.getCartItemCount()
         })
       }
+    })
+
+    // event bus 监听一个事件 refreshCartCount
+    eventBus.on('refreshCartCount', (data) => {
+      this.setData({
+        cartItemCount: cart.getCartItemCount()
+      })
     })
   },
 
@@ -37,10 +48,15 @@ Page({
     const pname = this.data.detail.name
     const price = this.data.detail.price
     cart.addCart(this.product_id, pname, price);
+    this.setData({
+      cartItemCount: cart.getCartItemCount()
+    })
+  },
+
+  viewCart() {
     wx.navigateTo({
       url: '../shopping-cart/shopping-cart',
     })
-    console.log();
   },
 
   /**

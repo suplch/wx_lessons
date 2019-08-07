@@ -20,11 +20,12 @@
     <image src="{{item}}"/>
   </view>
   <view style="position: fixed; background: orange; width: 100%; height: 100rpx; bottom: 0rpx; left: 0rpx; right: 0rpx;">
-    <view style="text-align: center;float: left; width: 200rpx; margin: 30rpx;">
+    <view style="text-align: center;float: left; width: 50rpx; margin: 30rpx;">
       <text style="color: red">¥{{detail.price}}</text>
     </view>
     
-    <button style="float: right">立刻购买</button>
-    <button bindtap="addToCart" style="float: right">添加购物车</button>
+    <button class="button">立刻购买</button>
+    <button bindtap="addToCart" class="button">放入购物车</button>
+    <button bindtap="viewCart" class="button">查看购物车 ({{cartItemCount}})</button>
   </view>
 </view>

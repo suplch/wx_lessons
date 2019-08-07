@@ -2,6 +2,8 @@
 
 const cart = require('../../utils/shoppingcart.js');
 
+const eventBus = require('../../utils/eventbus.js');
+
 
 Page({
 
@@ -28,6 +30,8 @@ Page({
   incCount(event) {
     console.log(event.currentTarget.dataset.pid);
     cart.incCount(event.currentTarget.dataset.pid)
+    // event bus 广播一个事件 refreshCartCount
+    eventBus.emit('refreshCartCount', ' a data');
     this.setData({
       cartItems: cart.getCartItems(),
       total: cart.getTotal()
@@ -36,6 +40,7 @@ Page({
 
   decCount(event) {
     cart.decCount(event.currentTarget.dataset.pid)
+    eventBus.emit('refreshCartCount');
     this.setData({
       cartItems: cart.getCartItems(),
       total: cart.getTotal()

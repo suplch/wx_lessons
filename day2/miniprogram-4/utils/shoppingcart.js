@@ -43,5 +43,13 @@ module.exports = {
       sum += item.price * item.count;
     }
     return sum;
+  },
+
+  getCartItemCount() {
+    let count = 0;
+    for (let item of shoppingCart.items) {
+      count += item.count;
+    }
+    return count;
   }
 }
