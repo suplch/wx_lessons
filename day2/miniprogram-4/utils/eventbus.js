@@ -19,7 +19,15 @@ module.exports = {
       callbackList = [];
     }
     callbackList.push(callback)
-    events[eventName] = callbackList
+    events[eventName] = callbackList;
+
+    return {
+      cancle() {
+        let position = callbackList.indexOf(callback);
+        callbackList.splice(position, 1);
+      }
+    }
+
   },
 
   emit(eventName, data) {
