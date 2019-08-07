@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/search/search",
     "pages/product/product",
-    "pages/product_detail/product_detail"
+    "pages/product_detail/product_detail",
+    "pages/shopping-cart/shopping-cart"
   ],
   "tabBar": {
     "list": [

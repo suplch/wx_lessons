@@ -1,0 +1,37 @@
+.button {
+  float: right;
+  height: 50rpx;
+  font-size: 24rpx;
+}
+
+.carItem {
+  position: relative;
+  height: 80rpx;
+  margin: 20rpx;
+  padding: 20rpx;
+  box-shadow: 1px 1px 5px orange;
+}
+
+.carItem .pname {
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.carItem .price {
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+}
+
+.foot {
+  position: fixed;
+  height: 100rpx;
+  left: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+}
+
+.foot .pay {
+  float: right;
+}

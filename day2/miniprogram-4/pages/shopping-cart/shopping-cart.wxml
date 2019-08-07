@@ -1,0 +1,17 @@
+<view>
+  <view wx:key="{{item.pid}}" wx:for="{{cartItems}}" class="carItem">
+    <view class="pname">
+      <text>产品名称: {{item.name}}</text>
+    </view>
+    <view class="price">
+      <text> 单价: ¥{{item.price}}元, 数量: {{item.count}}</text>
+    </view>
+    <button data-pid="{{item.pid}}" bindtap="incCount" class="button">+</button>
+    <button data-pid="{{item.pid}}" bindtap="decCount" class="button">-</button>
+  </view>
+
+  <view class="foot">
+    <text>总计 ¥{{total}}元</text>
+    <button class="pay">去支付</button>
+  </view>
+</view>

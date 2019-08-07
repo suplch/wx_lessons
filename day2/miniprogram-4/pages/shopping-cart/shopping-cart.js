@@ -1,48 +1,47 @@
-// pages/product_detail/product_detail.js
+// pages/shopping-cart/shopping-cart.js
 
-const app = getApp()
+const cart = require('../../utils/shoppingcart.js');
 
-const cart = require('../../utils/shoppingcart');
 
 Page({
-  product_id: null,
+
   /**
    * 页面的初始数据
    */
   data: {
-    detail: null
+    cartItems: [],
+    total: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
-    this.product_id = options.pid;
-    let thispage = this;
-    wx.request({
-      url: 'http://localhost:3000/api/productDetail?pid=' + options.pid,
-      dataType: 'json',
-      success(res) {
-        console.log(res.data)
-        thispage.setData({
-          detail: res.data.productDetail
-        })
-      }
+
+    console.log('cart', cart.getCartItems())
+    this.setData({
+      cartItems: cart.getCartItems(),
+      total: cart.getTotal()
     })
   },
 
-  addToCart() {
-    console.log(this.product_id);
-    const pname = this.data.detail.name
-    const price = this.data.detail.price
-    cart.addCart(this.product_id, pname, price);
-    wx.navigateTo({
-      url: '../shopping-cart/shopping-cart',
+  incCount(event) {
+    console.log(event.currentTarget.dataset.pid);
+    cart.incCount(event.currentTarget.dataset.pid)
+    this.setData({
+      cartItems: cart.getCartItems(),
+      total: cart.getTotal()
     })
-    console.log();
   },
 
+  decCount(event) {
+    cart.decCount(event.currentTarget.dataset.pid)
+    this.setData({
+      cartItems: cart.getCartItems(),
+      total: cart.getTotal()
+    })
+  },
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

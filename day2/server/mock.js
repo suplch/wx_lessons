@@ -16,6 +16,8 @@ const products = [
 
 const productDetails = {
     "111": {
+        price: 76,
+        name: '棒球帽',
         items: [
             {name: '品牌', value: 'other/其他'},
             {name: '适用对象', value: '青年'},
@@ -45,6 +47,8 @@ const productDetails = {
         ]
     },
     "222": {
+        name: 't恤海魂衫男',
+        price: 110,
         items: [
             {name: '品牌', value: 'other/其他'},
             {name: '厚薄', value: '常规'},
@@ -93,6 +97,8 @@ const productDetails = {
         ]
     },
     "333": {
+        name: 't桖衫学院风海魂衫潮',
+        price: 136,
         items: [
             {name: '品牌', value: '其它/other'},
             {name: '品牌类型:', value: '设计师品牌'},
