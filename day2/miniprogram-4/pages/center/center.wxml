@@ -1,0 +1,11 @@
+<view>
+  {{logined}}
+  <view wx:if="{{!logined}}">
+    登录名 <input bindinput="changeLoginName" type="text" value="{{login_name}}" />
+    密码 <input bindinput="changePassword" password value="{{password}}" />
+    <button bindtap="login">登录</button>
+  </view>
+  <view wx:else>
+    欢迎 {{userName}}
+  </view>
+</view>

@@ -1,10 +1,17 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 
+const bodyParser = require('body-parser');
 
+const http = require('http');
 const path = require('path');
 const app = express();
 
 const mock = require('./mock');
+const mockUser = require('./mockUsers');
+
+
+app.use(bodyParser.json());
 
 app.use('static', express.static(path.join(__dirname, 'public')));
 
@@ -35,6 +42,28 @@ app.get('/api/productDetail', function (req, res) {
             productDetail: null
         })
     }
+});
+
+app.post('/api/login', function (req, res) {
+    const { loginName, password } = req.body;
+    const user = mockUser.login(loginName, password);
+
+    if (user) {
+        var token = jwt.sign(user, '秘钥11111');
+        res.send({
+            status: 10000,
+            data: {
+                userId: user.id,
+                userName: user.name,
+                token: token
+            }
+        })
+    } else {
+        res.send({
+            status: 11001
+        })
+    }
+
 });
 
 

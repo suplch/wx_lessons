@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="event_test.js"></script>
+</head>
+<body>
+    <script>
+        // pages/index/index
+        window.eventBus.on('我饿了', () => {
+            console.log('快吃饭')
+
+            this.setData({
+
+            })
+        });
+
+
+        // pages/cartItems/cartItsm
+        // onLoad()
+        onLoad() {
+            this.handler = window.eventBus.on('我饿了', () => {
+                console.log('实在是太饿了')
+                this.setData({
+
+                })
+            });
+        }
+
+
+        // 卸载Unload()
+        unLoad() {
+            this.handler.cancle();
+        }
+
+
+
+        window.eventBus('困了', function () {
+
+        });
+
+
+        window.eventBus.emit('我饿了')
+
+
+        window.eventBus.emit('困了')
+
+
+
+
+    </script>
+</body>
+</html>

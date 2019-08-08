@@ -7,7 +7,8 @@
     "pages/product_detail/product_detail",
     "pages/shopping-cart/shopping-cart",
     "pages/preview/preview",
-    "pages/myplace/myplace"
+    "pages/myplace/myplace",
+    "pages/center/center"
   ],
   "tabBar": {
     "list": [
@@ -22,6 +23,10 @@
       {
         "pagePath": "pages/product/product",
         "text": "产品"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "个人中心"
       }
     ]
   },
