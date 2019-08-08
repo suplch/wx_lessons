@@ -1,4 +1,6 @@
 // pages/center/center.js
+const ajax = require('../../utils/myRequest');
+
 Page({
 
   /**
@@ -41,6 +43,28 @@ Page({
           wx.setStorageSync('token', res.data.data.token);
           wx.setStorageSync('username', res.data.data.userName);
         }
+        console.log(res.data)
+      }
+    })
+  },
+
+  logout() {
+    wx.removeStorageSync('userid');
+    wx.removeStorageSync('username');
+    wx.removeStorageSync('token');
+    this.setData({
+      logined: false,
+      userName: '',
+      login_name: '',
+      password: ''
+    })
+  },
+
+  getgender() {
+    ajax.request({
+      url: 'http://localhost:3000/api/getgender?userId=22222',
+      dataType: 'json',
+      success(res) {
         console.log(res.data)
       }
     })

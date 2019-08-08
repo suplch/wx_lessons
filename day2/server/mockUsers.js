@@ -16,5 +16,13 @@ module.exports = {
             return users[position];
         }
         return null;
+    },
+
+    getUser(userId) {
+        const position = users.findIndex((user) => {
+            return user.id === userId
+        });
+
+        return users[position];
     }
 };
