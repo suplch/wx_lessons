@@ -1,4 +1,5 @@
 // pages/product/product.js
+
 Page({
   pageNo: 1,
   loadingPage: false,
@@ -16,6 +17,8 @@ Page({
       url: '../product_detail/product_detail?pid=' + event.currentTarget.dataset.pid,
     })
   },
+
+  
 
   /**
    * 生命周期函数--监听页面加载

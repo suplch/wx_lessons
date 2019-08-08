@@ -10,5 +10,6 @@
     <button bindtap="logout">退出</button>
 
     <button bindtap="getgender">获取性别</button>
+    余额: ¥{{amount}}元
   </view>
 </view>

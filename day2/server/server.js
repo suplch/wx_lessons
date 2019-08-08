@@ -10,6 +10,8 @@ const app = express();
 
 const mock = require('./mock');
 const mockUser = require('./mockUsers');
+const mockOrder = require('./mockOrder');
+
 
 
 app.use(bodyParser.json());
@@ -68,11 +70,82 @@ app.post('/api/login', function (req, res) {
 
 });
 
+
+app.get('/api/userAmount', function (req, res) {
+    jwt.verify(req.cookies.token, '秘钥11111', function (err, user) {
+        if(err) {
+            res.send({
+                msg: 'token 失效'
+            });
+            return;
+        }
+
+
+        let userRecord = mockUser.getUser(user.id);
+
+        res.send({
+            status: 10000,
+            data: {
+                amount: userRecord.amount
+            }
+        })
+    });
+});
+
+
+app.post('/api/payment', function (req, res) {
+
+    jwt.verify(req.cookies.token, '秘钥11111', function (err, user) {
+        if(err) {
+            res.send({
+                msg: 'token 失效'
+            });
+            return;
+        }
+        const {place, goodsItems} = req.body;
+
+
+        const orderId = mockOrder.generateOrder(user.id, goodsItems, place);
+
+        let amount = 0;
+        for (let item of goodsItems) {
+            amount += item.price * item.count
+        }
+        console.log('orderId: ', orderId, ' amount', amount);
+        let success = mockUser.decAmount(user.id, amount);
+
+        if (success) {
+            mockOrder.changeOrderState(orderId);
+
+            setTimeout(function () {
+                res.send({
+                    status: 10000,
+                    msg: '支付成功',
+                    data: {
+                        orderId
+                    }
+                })
+            }, 1000)
+
+
+        } else {
+            res.send({
+                status: 19000,
+                msg: '支付失败'
+            })
+        }
+
+
+    });
+
+
+
+});
+
+
 app.get('/api/getgender', function (req, res) {
     const userId = req.query.userId;
     console.log('cookie ', req.cookies)
-
-
 
     if (!req.cookies.token) {
         res.send({

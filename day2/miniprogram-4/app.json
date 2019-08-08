@@ -8,7 +8,8 @@
     "pages/shopping-cart/shopping-cart",
     "pages/preview/preview",
     "pages/myplace/myplace",
-    "pages/center/center"
+    "pages/center/center",
+    "pages/paySuccess/paySuccess"
   ],
   "tabBar": {
     "list": [

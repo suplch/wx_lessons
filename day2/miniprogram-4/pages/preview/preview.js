@@ -1,5 +1,9 @@
 // pages/preview/preview.js
 const eventBus = require('../../utils/eventbus.js');
+
+const ajax = require('../../utils/myRequest.js');
+
+
  //  wx.setStorageSync('currentPlace', event.currentTarget.dataset.place)
 Page({
 
@@ -50,6 +54,32 @@ Page({
 
   },
 
+  payment() {
+    wx.showLoading({
+      title: '支付中...',
+      mask: true,
+    })
+    ajax.request({
+      url: 'http://localhost:3000/api/payment',
+      data: {
+        place: this.data.place,
+        goodsItems: this.data.cartItems
+      },
+      method: 'POST',
+      dataType: 'json',
+      success(res) {
+        console.log(res.data)
+        if (res.data.status === 10000) {
+          wx.hideLoading();
+          eventBus.emit('refreshAmount')
+          wx.navigateTo({
+            url: '../paySuccess/paySuccess',
+          })
+        }
+      }
+    })
+
+  },
   /**
    * 生命周期函数--监听页面显示
    */

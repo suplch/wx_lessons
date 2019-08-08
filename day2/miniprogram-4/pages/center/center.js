@@ -1,5 +1,6 @@
 // pages/center/center.js
 const ajax = require('../../utils/myRequest');
+const eventBus = require('../../utils/eventbus.js');
 
 Page({
 
@@ -10,13 +11,35 @@ Page({
     logined: false,
     userName: '',
     login_name: '',
-    password: ''
+    password: '',
+    amount: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let thisPage = this;
+
+    const refreshAmount = () => {
+      ajax.request({
+        url: 'http://localhost:3000/api/userAmount',
+        dataType: 'json',
+        success(res) {
+          if (res.data.status === 10000) {
+            thisPage.setData({
+              amount: res.data.data.amount
+            })
+          }
+          console.log(res.data)
+        }
+      })
+    }
+    refreshAmount();
+
+    eventBus.on('refreshAmount', refreshAmount)
+
+
     this.setData({
       logined: wx.getStorageSync('token') ? true : false,
       userName: wx.getStorageSync('username')
