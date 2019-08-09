@@ -131,15 +131,32 @@ app.post('/api/payment', function (req, res) {
         } else {
             res.send({
                 status: 19000,
-                msg: '支付失败'
+                msg: '支付失败 余额不足, 请充值'
             })
         }
-
-
     });
+});
 
+app.get('/api/getOrders', function (req, res) {
 
+    jwt.verify(req.cookies.token, '秘钥11111', function (err, user) {
+        if(err) {
+            res.send({
+                status: 10001,
+                msg: 'token 失效'
+            });
+            return;
+        }
 
+        let orderList = mockOrder.getOrderList(user.id);
+
+        res.send({
+            status: 10000,
+            data: {
+                orderList
+            }
+        })
+    });
 });
 
 

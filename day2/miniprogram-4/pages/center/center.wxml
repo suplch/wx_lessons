@@ -11,5 +11,7 @@
 
     <button bindtap="getgender">获取性别</button>
     余额: ¥{{amount}}元
+
+    <button bindtap="viewOrder">查看订单</button>
   </view>
 </view>

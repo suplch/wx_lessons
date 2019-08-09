@@ -70,12 +70,20 @@ Page({
       success(res) {
         console.log(res.data)
         if (res.data.status === 10000) {
-          wx.hideLoading();
           eventBus.emit('refreshAmount')
           wx.navigateTo({
             url: '../paySuccess/paySuccess',
           })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 3000
+          })
         }
+      },
+      complete() {
+        wx.hideLoading();
       }
     })
 

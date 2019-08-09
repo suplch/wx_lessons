@@ -1,0 +1,9 @@
+.orderItem {
+  margin: 20rpx;
+  padding: 20rpx;
+  box-shadow: 1px 1px 5px red
+}
+
+.orderItem.paid {
+box-shadow: 1px 1px 5px green
+}

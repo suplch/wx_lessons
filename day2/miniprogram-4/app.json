@@ -9,7 +9,8 @@
     "pages/preview/preview",
     "pages/myplace/myplace",
     "pages/center/center",
-    "pages/paySuccess/paySuccess"
+    "pages/paySuccess/paySuccess",
+    "pages/orderList/orderList"
   ],
   "tabBar": {
     "list": [

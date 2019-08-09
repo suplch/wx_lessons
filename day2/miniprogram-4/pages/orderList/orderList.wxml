@@ -1,0 +1,8 @@
+<view>
+  订单列表
+  <view wx:if="{{orderList}}">
+    <view wx:for="{{orderList}}" class="orderItem {{ item.state === '已支付'? 'paid': ''}}">
+      {{item.id}}, 状态: {{item.state}},  金额: ¥{{item.total}}元
+    </view>
+  </view>
+</view>
